@@ -14,6 +14,16 @@ void err(char* msg) {
 	printf("Error: %s\n", msg);
 }
 
+int validInt(char* str, unsigned int ln) {
+	for (int i = 0; i < ln; i++) {
+		if (!isdigit(str[i])) {
+			return 1;
+		}
+	}
+
+	return 0;
+}
+
 int main(int argc, char* argv[]) {
 	if (argc == 1) {
 		err("No arguments");
@@ -30,12 +40,10 @@ int main(int argc, char* argv[]) {
 	int res[2];
 
 	char* strWd = argv[1];
-	for (int i = 0; i < strlen(strWd); i++) {
-		if (!isdigit(strWd[i])) {
-			err("Character not an integer");
+	if (validInt(strWd, strlen(strWd))) {
+		err("Character not an integer");
 
-			return 1;
-		}
+		return 1;
 	}
 
 	res[WD] = atoi(strWd);
@@ -47,12 +55,10 @@ int main(int argc, char* argv[]) {
 		strHt = argv[1];
 	}
 
-	for (int i = 0; i < strlen(strHt); i++) {
-		if (!isdigit(strHt[i])) {
-			err("Character not an integer");
+	if (validInt(strHt, strlen(strHt))) {
+		err("Character not an integer");
 
-			return 1;
-		}
+		return 1;
 	}
 
 	res[HT] = atoi(strHt);
