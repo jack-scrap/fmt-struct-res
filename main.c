@@ -3,6 +3,11 @@
 #include <string.h>
 #include <ctype.h>
 
+enum {
+	WD,
+	HT
+};
+
 const char sep = 'x';
 
 void err(char* msg) {
@@ -33,7 +38,7 @@ int main(int argc, char* argv[]) {
 		}
 	}
 
-	res[0] = atoi(strWd);
+	res[WD] = atoi(strWd);
 
 	char* strHt = argv[2];
 	for (int i = 0; i < strlen(strHt); i++) {
@@ -44,9 +49,9 @@ int main(int argc, char* argv[]) {
 		}
 	}
 
-	res[1] = atoi(strHt);
+	res[HT] = atoi(strHt);
 
-	printf("%d%c%d\n", res[0], sep, res[1]);
+	printf("%d%c%d\n", res[WD], sep, res[HT]);
 
 	return 0;
 }
