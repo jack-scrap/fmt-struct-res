@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
 		return 1;
 	}
 
-	if (argc != 1 + 1 + 1) {
+	if (argc > 1 + 1 + 1) {
 		err("Wrong number of arguments");
 
 		return 1;
@@ -40,7 +40,13 @@ int main(int argc, char* argv[]) {
 
 	res[WD] = atoi(strWd);
 
-	char* strHt = argv[2];
+	char* strHt;
+	if (argc == 1 + 1 + 1) {
+		strHt = argv[2];
+	} else {
+		strHt = argv[1];
+	}
+
 	for (int i = 0; i < strlen(strHt); i++) {
 		if (!isdigit(strHt[i])) {
 			err("Character not an integer");
