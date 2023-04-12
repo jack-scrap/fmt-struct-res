@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 
 const char sep = 'x';
 
@@ -19,8 +21,32 @@ int main(int argc, char* argv[]) {
 
 		return 1;
 	}
-	
-	printf("%d%c%d\n", atoi(argv[1]), sep, atoi(argv[2]));
+
+	int res[2];
+
+	char* strWd = argv[1];
+	for (int i = 0; i < strlen(strWd); i++) {
+		if (!isdigit(strWd[i])) {
+			err("Character not an integer");
+
+			return 1;
+		}
+	}
+
+	res[0] = atoi(strWd);
+
+	char* strHt = argv[2];
+	for (int i = 0; i < strlen(strHt); i++) {
+		if (!isdigit(strHt[i])) {
+			err("Character not an integer");
+
+			return 1;
+		}
+	}
+
+	res[1] = atoi(strHt);
+
+	printf("%d%c%d\n", res[0], sep, res[1]);
 
 	return 0;
 }
