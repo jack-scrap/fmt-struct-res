@@ -11,7 +11,7 @@ enum {
 const char sep = 'x';
 
 void err(char* msg) {
-	printf("Error: %s\n", msg);
+	fprintf(stderr, "Error: %s\n", msg);
 }
 
 int validInt(char* str, unsigned int ln) {
